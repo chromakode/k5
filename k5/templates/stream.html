@@ -1,0 +1,11 @@
+<ul id="stream">
+  {% for event in events %}
+    <li class="{{ event.kind }}">
+      {% if event.children %}
+        {% include ["kinds/" + event.kind + "_multi.html", "kinds/multi.html"] %}
+      {% else %}
+        {% include ["kinds/" + event.kind + ".html", "kinds/generic.html"] %}
+      {% endif %}
+    </li>
+  {% endfor %}
+</ul>

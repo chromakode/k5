@@ -1,0 +1,192 @@
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: sans-serif;
+
+  // show scrollbar during initial chunked render
+  &.front {
+    min-height: 101vh;
+  }
+}
+
+#title-page {
+  position: relative;
+  width: 100%;
+  text-align: center;
+  overflow: hidden;
+  min-height: 1.5em;
+
+  h1, h2 {
+    margin: 0;
+  }
+
+  h1 {
+    font-size: 9em;
+    color: #111;
+    margin-top: .2em;
+  }
+
+  h2 {
+    font-size: 4em;
+    font-weight: normal;
+    color: #444;
+  }
+
+  .scroll-down {
+    position: absolute;
+    left: 50%;
+    bottom: 3.5em;
+    display: inline-block;
+    width: 3.5em;
+    height: 3.5em;
+    margin-left: -1.75em;
+    border: 3px solid #5faf5f;
+    border-top: none;
+    border-right: none;
+    transform: translateX(-1.5px) scaleY(.65) rotate(-45deg);
+    transition: opacity 1s ease;
+  }
+}
+
+#spinner {
+  position: relative;
+  max-width: 900px;
+  height: 75%;
+  margin: auto;
+  text-align: left;
+
+  &:active {
+    cursor: move;
+  }
+}
+
+#logo {
+  position: absolute;
+  margin: auto;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+}
+
+.color-bars {
+  header & {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+
+  footer & {
+    transform: scaleX(-1);
+  }
+
+  .bar {
+    float: left;
+    width: 100% / 6;
+    height: 1.5em;
+  }
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  border-top: 1px solid #dedede;
+  padding-top: 1em;
+  margin-top: 2em;
+
+  .credits {
+    font-size: .85em;
+    opacity: .7;
+
+    img {
+      vertical-align: middle;
+    }
+  }
+}
+
+#side-logo {
+  display: block;
+  position: fixed;
+  width: 50px;
+  height: 50px;
+  left: 20px;
+  top: 20px;
+  transition: opacity .5s ease;
+  z-index: 10;
+}
+
+body.front #side-logo {
+  opacity: 0;
+}
+
+@media (max-width: 900px) {
+  #side-logo {
+    left: auto;
+    top: auto;
+    right: 6px;
+    bottom: 6px;
+  }
+}
+
+body.scrolled {
+  .scroll-down {
+    opacity: 0;
+  }
+}
+
+body.below-fold {
+  #side-logo {
+    opacity: 1;
+  }
+}
+
+#stream, footer > .inner {
+  max-width: 45em;
+  margin: 0 auto;
+}
+
+#stream {
+  margin-top: 2em;
+  margin-bottom: 2em;
+  padding: 1em;
+
+  & > li {
+    list-style-type: none;
+  }
+
+  article {
+    margin-bottom: 4em;
+  }
+
+  time {
+    margin-left: 1em;
+    font-size: .9em;
+  }
+
+  h1 {
+    margin-top: .25em;
+  }
+
+  p > code {
+    font-weight: normal;
+    padding: .1em .33em;
+    background: #f4f4f4;
+    border-radius: 3px;
+  }
+
+  pre {
+    overflow: auto;
+    padding: .66em;
+    background: #f4f4f4;
+  }
+
+  hr {
+    border: none;
+    border-bottom: 1px dashed gray;
+  }
+}

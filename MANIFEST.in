@@ -1,0 +1,2 @@
+recursive-include k5/static *
+recursive-include k5/templates *

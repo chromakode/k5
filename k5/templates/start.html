@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+<link rel="alternate" href="{{ url_for('wake.recent_feed') }}" title="Recent Posts" type="application/atom+xml">
+<meta name="viewport" content="width=device-width, user-scalable=no">
+<link rel="icon" href="static/favicon.png" type="image/png">
+<style>
+  {{ css|safe }}
+</style>
+<title>chromakode</title>
+</head>
+<body{% if body_class %} class="{{body_class}}"{% endif %}>
+  <header id="title-page">
+    {% if body_class == 'front' %}
+      <div id="spinner">
+        <canvas id="logo"></canvas>
+      </div>
+      <h1>Hi, I'm Max.</h1>
+      <h2>This is my journal and sketchbook.</h2>
+      <div class="scroll-down"></div>
+    {% endif %}
+    <div class="color-bars"></div>
+  </header>
+  <script>
+    {{ js|safe }}
+  </script>
