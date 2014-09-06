@@ -71,7 +71,7 @@ def index():
     def render():
         return render_template('stream.html',
             events=base.store.collapsed_events(
-                source='git-markdown:/home/chromakode/blog:posts',
+                source='git-markdown:/home/chromakode/blog:post',
             ),
         )
     return stream_page(render, body_class='front')
