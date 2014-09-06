@@ -32,6 +32,8 @@ def after(response):
             )
             html = re.sub(r"\s+", " ", html)
             html = re.sub(r">\s*<", "><", html)
+            html = re.sub(r">\s+", ">", html)
+            html = re.sub(r"\s+<", "<", html)
             yield html
 
     response.headers.pop('Content-Length', None)
