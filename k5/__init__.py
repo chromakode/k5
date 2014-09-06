@@ -52,6 +52,11 @@ def date(timestamp):
     return dt.strftime('%B %e, %Y')
 
 
+@app.template_filter('dashify')
+def dashify(text):
+    return text.replace(' -- ', ' &ndash; ')
+
+
 def stream_page(render, body_class=None):
     @stream_with_context
     def stream():
