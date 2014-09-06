@@ -167,6 +167,18 @@ body.below-fold {
 
   article {
     margin-bottom: 4em;
+    line-height: 1.35em;
+  }
+
+  img {
+    width: 100%;
+  }
+
+  img.tall {
+    display: block;
+    margin: 0 auto;
+    width: auto;
+    max-height: 25em;
   }
 
   time {
@@ -178,7 +190,14 @@ body.below-fold {
     margin-top: .25em;
   }
 
-  p > code {
+  h2 {
+    margin-top: 1.5em;
+    margin-bottom: .5em;
+    font-size: 1.25em;
+    color: #222;
+  }
+
+  p > code, li > code {
     font-weight: normal;
     padding: .1em .33em;
     background: #f4f4f4;
