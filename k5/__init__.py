@@ -1,7 +1,7 @@
 from datetime import datetime
 import re
 
-from flask import Flask, Response, stream_with_context, render_template
+from flask import Flask, Response, abort, stream_with_context, render_template
 
 from wake import base
 
@@ -57,10 +57,11 @@ def dashify(text):
     return text.replace(' -- ', ' &ndash; ')
 
 
-def stream_page(render, body_class=None):
+def stream_page(render, body_class=None, title=None):
     @stream_with_context
     def stream():
-        yield render_template('start.html', css=css, js=js, body_class=body_class)
+        yield render_template('start.html',
+                css=css, js=js, body_class=body_class, title=title)
         yield render()
         yield render_template('end.html')
     return Response(stream())
@@ -79,9 +80,13 @@ def index():
 
 @app.route('/post/<slug>')
 def by_slug(slug):
+    events = list(base.store.events_by_slug(slug))
+    if not events:
+        abort(404)
+
     def render():
-        return base.by_slug(slug)
-    return stream_page(render)
+        return render_template('stream.html', events=events)
+    return stream_page(render, title=events[0]['title'])
 
 
 app.register_blueprint(base.blueprint)

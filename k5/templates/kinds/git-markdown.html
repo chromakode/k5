@@ -1,4 +1,4 @@
 <article>
-/ <a href="{{ url_for('wake.by_slug', slug=event.slug) }}"><strong>{{ event.title }}</strong></a><time>{{ event.timestamp|date }}</time>
+/ <a href="{{ url_for('wake.by_slug', slug=event.slug) }}"><strong>{{ event.slug }}</strong></a><time>{{ event.timestamp|date }}</time>
 {{ event.content|dashify|safe }}
 </article>
